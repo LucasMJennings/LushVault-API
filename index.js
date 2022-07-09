@@ -11,10 +11,10 @@ app.use(cors({
 }));
 
 // Default to port 3000 if none specified in the environment
-const port = process.env.PORT || '3000';
+const port = '3000';
 
-const server = app.listen(port, () => {
+app.listen(port, () => {
   console.log(`Listening on port ${port}...`);
 });
 
-module.exports = server;
+module.exports = {app};
