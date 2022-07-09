@@ -7,7 +7,10 @@ require('./startup/morgan.js')(app);
 require('./startup/routes.js')(app);
 const cors = require('cors');
 app.use(cors({
-  origin: '*'
+  "origin": "*",
+  "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+  "preflightContinue": false,
+  "optionsSuccessStatus": 204
 }));
 
 // Default to port 3000 if none specified in the environment
