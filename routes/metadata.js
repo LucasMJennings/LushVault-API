@@ -22,8 +22,12 @@ router.get('/:tokenId', async(req, res) => {
         res.status(500).send('Uh oh, something went wrong...');
     }
     if (getOwner) {
-        owner = await methods.getTokenOwner(tokenId);
-        tokenData.owner = owner;
+        try {
+            owner = await methods.getTokenOwner(tokenId);
+            tokenData.owner = owner;
+        } catch (err) {
+            console.log(err);
+        }
     }
     if (getPrice) {
         let priceList = await methods.getTokenPrice([{"token_id": tokenId}]);
